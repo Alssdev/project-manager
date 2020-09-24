@@ -4,6 +4,7 @@
 
 .card-content {
 	height: 100%;
+	transition: 0.3s;
 }
 
 /* Containers */
