@@ -1,0 +1,33 @@
+.tasks {
+	cursor: move;
+}
+
+.card-content {
+	height: 100%;
+}
+
+/* Containers */
+#toDo {
+	width: 100%;
+	height: 100%;
+}
+
+#inProgress {
+	width: 100%;
+	height: 100%;
+}
+
+#completed {
+	width: 100%;
+	height: 100%;
+}
+
+/* Drag and drop classes */
+
+.content.tasks.task-selected {
+	transform: scale(1.04) rotate(-1deg);
+}
+
+.content.tasks.task-drag {
+	opacity: 0;
+}
