@@ -21,6 +21,13 @@ Sortable.create(toDo, {
 			return sequence.length ? sequence : [];
 		},
 	},
+
+	// save progress
+	onAdd: (event) => {
+		const id = event.item.attributes['data-id'].nodeValue;
+
+		axios.put(`/tasks/${id}/state/1`);
+	},
 });
 
 Sortable.create(inProgress, {
@@ -42,6 +49,13 @@ Sortable.create(inProgress, {
 			return sequence.length ? sequence : [];
 		},
 	},
+
+	// save progress
+	onAdd: (event) => {
+		const id = event.item.attributes['data-id'].nodeValue;
+
+		axios.put(`/tasks/${id}/state/2`);
+	},
 });
 
 Sortable.create(completed, {
@@ -62,5 +76,12 @@ Sortable.create(completed, {
 			const sequence = localStorage.getItem('sequence-completed').split(',');
 			return sequence.length ? sequence : [];
 		},
+	},
+
+	// save progress
+	onAdd: (event) => {
+		const id = event.item.attributes['data-id'].nodeValue;
+
+		axios.put(`/tasks/${id}/state/3`);
 	},
 });

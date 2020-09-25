@@ -25,7 +25,6 @@
 	},
 	"homepage": "https://github.com/Alssdev/project-manager#readme",
 	"dependencies": {
-		"axios": "^0.20.0",
 		"bcryptjs": "^2.4.3",
 		"connect-flash": "^0.1.1",
 		"express": "^4.17.1",

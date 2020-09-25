@@ -62,4 +62,17 @@ router.post('/', (req, res) => {
 	res.redirect('tasks');
 });
 
+router.put('/:id/state/:state', (req, res) => {
+	const { id, state } = req.params;
+
+	const sql = `UPDATE tasks SET state=${state} WHERE id=${id}`;
+	db.run(sql, (err) => {
+		if (err) {
+			console.log(err.message);
+			res.sendStatus(500);
+		}
+
+		res.sendStatus(200);
+	});
+});
 module.exports = router;
