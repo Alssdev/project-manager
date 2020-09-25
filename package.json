@@ -28,14 +28,12 @@
 		"bcryptjs": "^2.4.3",
 		"connect-flash": "^0.1.1",
 		"express": "^4.17.1",
-		"express-handlebars": "^5.1.0",
+		"express-handlebars": "^4.0.4",
 		"express-mysql-session": "^2.1.4",
 		"express-session": "^1.17.1",
 		"express-validator": "^6.6.1",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
-		"sequelize": "^6.3.5",
-		"sortablejs": "^1.12.0",
 		"sqlite3": "^5.0.0"
 	},
 	"devDependencies": {

@@ -1,0 +1,16 @@
+<h1 class="title">Nueva tarea</h1>
+<div class="box">
+  <form action="/tasks" method="POST">
+    <div class="field">
+      <label class="label" for="title">Título</label>
+      <input class="input" id="title" name="title" type="text" placeholder="Título para la tarea...." required>
+    </div>
+    <div class="field">
+      <label class="label" for="desc">Descripción</label>
+      <textarea class="textarea" id="desc" name="desc" type="textarea" required></textarea>
+    </div>
+    <div class="buttons">
+      <button class="button is-info">Añadir</button>
+    </div>
+  </form>
+</div>

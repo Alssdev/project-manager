@@ -1,19 +1,38 @@
-const { Router } = require('express')
-const router = Router()
+const { Router } = require('express');
+const router = Router();
 
-const db = require('../db')
+const db = require('../db');
 
 router.get('/', (req, res) => {
-	const sql = 'SELECT * FROM tasks'
+	const sql = 'SELECT * FROM tasks';
 
 	db.all(sql, (err, rows) => {
 		if (err) {
-			console.log(err.message)
-			res.status(500).json({ error: err.message })
+			console.log(err.message);
+			res.status(500).json({ error: err.message });
 		}
 
-		res.render('index', { tasks: rows })
-	})
-})
+		res.render('tasks/list', { tasks: rows });
+	});
+});
 
-module.exports = router
+router.get('/add', (req, res) => {
+	res.render('tasks/add');
+});
+
+router.post('/', (req, res) => {
+	const task = req.body;
+
+	db.run(
+		`INSERT INTO tasks(title, desc) VALUES('${task.title}', '${task.desc}')`,
+		(err) => {
+			if (err) {
+				console.log(err.message);
+			}
+		}
+	);
+
+	res.redirect('tasks');
+});
+
+module.exports = router;
