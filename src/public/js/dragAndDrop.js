@@ -1,6 +1,6 @@
-const toDo = document.getElementById('toDo')
-const inProgress = document.getElementById('inProgress')
-const completed = document.getElementById('completed')
+const toDo = document.getElementById('toDo');
+const inProgress = document.getElementById('inProgress');
+const completed = document.getElementById('completed');
 
 Sortable.create(toDo, {
 	group: {
@@ -10,7 +10,10 @@ Sortable.create(toDo, {
 	chosenClass: 'task-selected',
 	dragClass: 'task-drag',
 	easing: 'cubic-bezier(0.5, 1, 0.89, 1)',
-})
+	store: {
+		set: function () {},
+	},
+});
 
 Sortable.create(inProgress, {
 	group: {
@@ -20,7 +23,7 @@ Sortable.create(inProgress, {
 	chosenClass: 'task-selected',
 	dragClass: 'task-drag',
 	easing: 'cubic-bezier(0.5, 1, 0.89, 1)',
-})
+});
 
 Sortable.create(completed, {
 	group: {
@@ -30,4 +33,4 @@ Sortable.create(completed, {
 	chosenClass: 'task-selected',
 	dragClass: 'task-drag',
 	easing: 'cubic-bezier(0.5, 1, 0.89, 1)',
-})
+});

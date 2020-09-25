@@ -1,6 +1,6 @@
 <h1 class="title">Nueva tarea</h1>
 <div class="box">
-  <form action="/tasks" method="POST">
+  <form action="/tasks?state={{state}}" method="POST">
     <div class="field">
       <label class="label" for="title">Título</label>
       <input class="input" id="title" name="title" type="text" placeholder="Título para la tarea...." required>

@@ -7,7 +7,7 @@
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas por realizar</h4>
-        <a href="tasks/add" class="card-header-icon" aria-label="more options">
+        <a href="tasks/add?state=1" class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-plus"></i>
           </span>
@@ -16,8 +16,8 @@
       <div class="card-content has-background-grey-lighter">
         <div id="toDo">
 
-          {{#each tasks}}
-          <div class="content tasks">
+          {{#each toDo}}
+          <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
             <div class="box">
               <p class="title is-6">{{title}}</p>
@@ -34,7 +34,7 @@
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas a en progreso</h4>
-        <a href="#" class="card-header-icon" aria-label="more options">
+        <a href="tasks/add?state=2" class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-plus"></i>
           </span>
@@ -42,6 +42,17 @@
       </header>
       <div class="card-content has-background-grey-lighter">
         <div id="inProgress">
+
+          {{#each inProgress}}
+          <div class="content tasks" data-id="{{id}}">
+            <a href="/tasks/delete/{{id}}" class="delete"></a>
+            <div class="box">
+              <p class="title is-6">{{title}}</p>
+              <p>{{desc}}</p>
+            </div>
+          </div>
+          {{/each}}
+
         </div>
       </div>
     </div>
@@ -51,7 +62,7 @@
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas a finalizadas</h4>
-        <a href="#" class="card-header-icon" aria-label="more options">
+        <a href="tasks/add?state=3" class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-plus"></i>
           </span>
@@ -59,6 +70,16 @@
       </header>
       <div class="card-content has-background-grey-lighter">
         <div id="completed">
+
+          {{#each completed}}
+          <div class="content tasks" data-id="{{id}}">
+            <a href="/tasks/delete/{{id}}" class="delete"></a>
+            <div class="box">
+              <p class="title is-6">{{title}}</p>
+              <p>{{desc}}</p>
+            </div>
+          </div>
+          {{/each}}
 
         </div>
       </div>

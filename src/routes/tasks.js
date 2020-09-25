@@ -12,12 +12,26 @@ router.get('/', (req, res) => {
 			res.status(500).json({ error: err.message });
 		}
 
-		res.render('tasks/list', { tasks: rows });
+		const toDo = rows.filter((task) => {
+			return task.state === 1;
+		});
+
+		const inProgress = rows.filter((task) => {
+			return task.state === 2;
+		});
+
+		const completed = rows.filter((task) => {
+			return task.state === 3;
+		});
+
+		res.render('tasks/list', { toDo, inProgress, completed });
 	});
 });
 
 router.get('/add', (req, res) => {
-	res.render('tasks/add');
+	const { state } = req.query;
+
+	res.render('tasks/add', { state });
 });
 
 router.get('/delete/:id', (req, res) => {
@@ -34,9 +48,10 @@ router.get('/delete/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 	const task = req.body;
+	const { state } = req.query;
 
 	db.run(
-		`INSERT INTO tasks(title, desc) VALUES('${task.title}', '${task.desc}')`,
+		`INSERT INTO tasks(title, desc, state) VALUES('${task.title}', '${task.desc}', ${state})`,
 		(err) => {
 			if (err) {
 				console.log(err.message);
