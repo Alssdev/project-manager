@@ -3,7 +3,7 @@
   <h1 class="title">Mi Proyecto de Prácticas</h1>
 </div>
 <div class="tile is-ancestor mt-6">
-  <div class="tile is-4">
+  <div class="tile is-4 mb-6">
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas por realizar</h4>
@@ -19,6 +19,11 @@
           {{#each toDo}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
+            <a href="#">
+              <span class="icon edit">
+              <i class="fas fa-edit"></i>
+              </span>
+            </a>
             <div class="box">
               <p class="title is-6">{{title}}</p>
               <p>{{desc}}</p>
@@ -30,7 +35,7 @@
     </div>
   </div>
   
-  <div class="tile is-4">
+  <div class="tile is-4 mb-6">
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas a en progreso</h4>
@@ -46,6 +51,11 @@
           {{#each inProgress}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
+            <a href="#">
+              <span class="icon edit">
+              <i class="fas fa-edit"></i>
+              </span>
+            </a>
             <div class="box">
               <p class="title is-6">{{title}}</p>
               <p>{{desc}}</p>
@@ -58,7 +68,7 @@
     </div>
   </div>
 
-  <div class="tile is-4">
+  <div class="tile is-4 mb-6">
     <div class="card" style="width: 90%;">
       <header class="card-header">
         <h4 class="card-header-title">Tareas a finalizadas</h4>
@@ -74,6 +84,11 @@
           {{#each completed}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
+            <a href="#">
+              <span class="icon edit">
+              <i class="fas fa-edit"></i>
+              </span>
+            </a>
             <div class="box">
               <p class="title is-6">{{title}}</p>
               <p>{{desc}}</p>
