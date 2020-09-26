@@ -19,7 +19,7 @@
           {{#each toDo}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
-            <a href="#">
+            <a href="/tasks/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>
@@ -51,7 +51,7 @@
           {{#each inProgress}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
-            <a href="#">
+            <a href="/tasks/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>
@@ -84,7 +84,7 @@
           {{#each completed}}
           <div class="content tasks" data-id="{{id}}">
             <a href="/tasks/delete/{{id}}" class="delete"></a>
-            <a href="#">
+            <a href="/tasks/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>

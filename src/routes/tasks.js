@@ -46,6 +46,19 @@ router.get('/delete/:id', (req, res) => {
 	});
 });
 
+router.get('/:id/edit', (req, res) => {
+	const { id } = req.params;
+
+	const sql = `SELECT * FROM tasks WHERE id=${id}`;
+	db.all(sql, (err, rows) => {
+		if (err) {
+			console.log(err);
+		}
+
+		res.render('tasks/edit', { task: rows[0] });
+	});
+});
+
 router.post('/', (req, res) => {
 	const task = req.body;
 	const { state } = req.query;
@@ -60,6 +73,20 @@ router.post('/', (req, res) => {
 	);
 
 	res.redirect('tasks');
+});
+
+router.post('/:id/edit', (req, res) => {
+	const updatedTask = req.body;
+	const { id } = req.params;
+
+	const sql = `UPDATE tasks SET title='${updatedTask.title}', desc='${updatedTask.desc}' WHERE id=${id}`;
+	db.run(sql, (err) => {
+		if (err) {
+			console.log(err.message);
+		}
+
+		res.redirect('/tasks');
+	});
 });
 
 router.put('/:id/state/:state', (req, res) => {
