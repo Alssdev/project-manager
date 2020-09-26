@@ -4,9 +4,12 @@
 	cursor: move;
 }
 
-.delete,
+.tasks .delete,
 .edit {
 	opacity: 0;
+}
+
+.delete {
 	transition: 0.3s;
 }
 

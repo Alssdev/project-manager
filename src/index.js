@@ -4,6 +4,9 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const morgan = require('morgan');
 
+const flash = require('connect-flash');
+const session = require('express-session');
+
 // intialiaztions
 const app = express();
 
@@ -23,11 +26,24 @@ app.engine(
 app.set('view engine', '.hbs');
 
 // middlewares
+app.use(
+	session({
+		secret: 'yVJZ58HdKRwIy9q',
+		resave: false,
+		saveUninitialized: false,
+	})
+);
+app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // global variables
+app.use((req, res, next) => {
+	app.locals.success = req.flash('success');
+	app.locals.error = req.flash('error');
+	next();
+});
 
 // routes
 app.use('/tasks', require('./routes/tasks'));

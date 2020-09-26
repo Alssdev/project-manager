@@ -67,12 +67,14 @@ router.post('/', (req, res) => {
 		`INSERT INTO tasks(title, desc, state) VALUES('${task.title}', '${task.desc}', ${state})`,
 		(err) => {
 			if (err) {
-				console.log(err.message);
+				req.flash('error', 'La tarea no hasido agregada satisfactoriamente.');
+			} else {
+				req.flash('success', 'La tarea ha sido agregada satisfactoriamente.');
 			}
+
+			res.redirect('tasks');
 		}
 	);
-
-	res.redirect('tasks');
 });
 
 router.post('/:id/edit', (req, res) => {
@@ -82,7 +84,9 @@ router.post('/:id/edit', (req, res) => {
 	const sql = `UPDATE tasks SET title='${updatedTask.title}', desc='${updatedTask.desc}' WHERE id=${id}`;
 	db.run(sql, (err) => {
 		if (err) {
-			console.log(err.message);
+			req.flash('error', 'La tarea no ha sido editada satisfactoriamente.');
+		} else {
+			req.flash('success', 'La tarea ha sido editada satisfactoriamente.');
 		}
 
 		res.redirect('/tasks');

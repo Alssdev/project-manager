@@ -14,8 +14,25 @@
   <header>
     {{> navbar}}
   </header>
+
+  {{#if success}}
+    <div class="notification is-success is-light">
+      <button class="delete"></button>
+        {{success}}
+    </div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="notification is-danger is-light">
+      <button class="delete"></button>
+        {{error}}
+    </div>
+    {{/if}}
+    
   <div class="section container">
     {{{ body }}}
   </div>
+
+  <script src="/js/delete.js"></script>
 </body>
 </html>
