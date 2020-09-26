@@ -5,10 +5,17 @@ const path = require('path');
 const morgan = require('morgan');
 
 const flash = require('connect-flash');
+
 const session = require('express-session');
+const passport = require('passport');
+
+const sqlite = require('sqlite3');
+const sqliteStoreFactory = require('express-session-sqlite').default;
+const SqliteStore = sqliteStoreFactory(session);
 
 // intialiaztions
 const app = express();
+require('./lib/passsport');
 
 // settings
 app.set('port', process.env.PORT || 4000);
@@ -31,12 +38,19 @@ app.use(
 		secret: 'yVJZ58HdKRwIy9q',
 		resave: false,
 		saveUninitialized: false,
+		store: new SqliteStore({
+			driver: sqlite.Database,
+			path: path.join(__dirname, 'data/database.sqlite'),
+			ttl: 1234,
+		}),
 	})
 );
 app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // global variables
 app.use((req, res, next) => {
@@ -46,6 +60,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.use(require('./routes/auth'));
 app.use('/tasks', require('./routes/tasks'));
 
 // public fils

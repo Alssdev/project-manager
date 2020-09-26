@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <form action="/signup" method="POST" class="form box">
+          <h3 class="title is-3">Registarse</h3>
+          <div class="field">
+            <label class="label">Nombre</label>
+            <div class="control">
+              <input class="input" name="name" maxlength="60" placeholder="Escribe tu nombre de usuario" required autofocus/>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" name="email" type="email" maxlength="60" placeholder="Escribe tu dirección de correo" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Contraseña</label>
+            <div class="control">
+              <input class="input" type="password" name="password" minlength="8" maxlength="60" placeholder="Escribe tu contraseña" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button class="button is-success">Registrarme</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+</section>
