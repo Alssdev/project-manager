@@ -6,7 +6,7 @@ const { isLoggedIn } = require('../lib/auth');
 const db = require('../db');
 
 router.get('/', isLoggedIn, (req, res) => {
-	const sql = 'SELECT * FROM tasks';
+	const sql = `SELECT * FROM tasks WHERE userID=${req.user.id}`;
 
 	db.all(sql, (err, rows) => {
 		if (err) {
@@ -39,19 +39,22 @@ router.get('/add', isLoggedIn, (req, res) => {
 router.get('/delete/:id', isLoggedIn, (req, res) => {
 	const { id } = req.params;
 
-	db.run(`DELETE FROM tasks WHERE id=${id}`, (err) => {
-		if (err) {
-			console.log(err.message);
-		}
+	db.run(
+		`DELETE FROM tasks WHERE id=${id} AND userID=${req.user.id}`,
+		(err) => {
+			if (err) {
+				console.log(err.message);
+			}
 
-		res.redirect('/tasks');
-	});
+			res.redirect('/tasks');
+		}
+	);
 });
 
 router.get('/:id/edit', isLoggedIn, (req, res) => {
 	const { id } = req.params;
 
-	const sql = `SELECT * FROM tasks WHERE id=${id}`;
+	const sql = `SELECT * FROM tasks WHERE id=${id} AND userID=${req.user.id}`;
 	db.all(sql, (err, rows) => {
 		if (err) {
 			console.log(err);
@@ -66,7 +69,7 @@ router.post('/', isLoggedIn, (req, res) => {
 	const { state } = req.query;
 
 	db.run(
-		`INSERT INTO tasks(title, desc, state) VALUES('${task.title}', '${task.desc}', ${state})`,
+		`INSERT INTO tasks(title, desc, state, userID) VALUES('${task.title}', '${task.desc}', ${state}, ${req.user.id})`,
 		(err) => {
 			if (err) {
 				req.flash('error', 'La tarea no hasido agregada satisfactoriamente.');
@@ -83,7 +86,7 @@ router.post('/:id/edit', isLoggedIn, (req, res) => {
 	const updatedTask = req.body;
 	const { id } = req.params;
 
-	const sql = `UPDATE tasks SET title='${updatedTask.title}', desc='${updatedTask.desc}' WHERE id=${id}`;
+	const sql = `UPDATE tasks SET title='${updatedTask.title}', desc='${updatedTask.desc}' WHERE id=${id} AND userID=${req.user.id}`;
 	db.run(sql, (err) => {
 		if (err) {
 			req.flash('error', 'La tarea no ha sido editada satisfactoriamente.');
@@ -98,7 +101,7 @@ router.post('/:id/edit', isLoggedIn, (req, res) => {
 router.put('/:id/state/:state', isLoggedIn, (req, res) => {
 	const { id, state } = req.params;
 
-	const sql = `UPDATE tasks SET state=${state} WHERE id=${id}`;
+	const sql = `UPDATE tasks SET state=${state} WHERE id=${id} AND userID=${req.user.id}`;
 	db.run(sql, (err) => {
 		if (err) {
 			console.log(err.message);

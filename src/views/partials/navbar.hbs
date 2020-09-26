@@ -19,6 +19,13 @@
       </div>
       <a class="navbar-item" href="/logout">Cerrar sesión</a>
     </div>
-  {{/if}}
+
+    {{else}}
+    <div class="navbar-end">
+      <a class="navbar-item" href="/signin">Iniciar Sesión</a>
+      <a class="navbar-item" href="/signup">Registrarse</a>
+    </div>
+
+    {{/if}}
   </div>
 </nav>
