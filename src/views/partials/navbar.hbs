@@ -5,8 +5,20 @@
     </a>
   </div>
   <div class="navbar-menu">
+
+    {{#if user}}
     <div class="navbar-end">
-      <a class="navbar-item" href="#">Cuenta</a>
-  </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p class="navbar-link">
+          Enlaces
+        </p>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/tasks">Lista</a>
+          <a class="navbar-item" href="/tasks/add?state=1">Crear</a>
+        </div>
+      </div>
+      <a class="navbar-item" href="/logout">Cerrar sesión</a>
+    </div>
+  {{/if}}
   </div>
 </nav>

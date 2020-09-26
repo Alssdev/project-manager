@@ -1,9 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 
+const { isLoggedIn } = require('../lib/auth');
+
 const db = require('../db');
 
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
 	const sql = 'SELECT * FROM tasks';
 
 	db.all(sql, (err, rows) => {
@@ -28,13 +30,13 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.get('/add', (req, res) => {
+router.get('/add', isLoggedIn, (req, res) => {
 	const { state } = req.query;
 
 	res.render('tasks/add', { state });
 });
 
-router.get('/delete/:id', (req, res) => {
+router.get('/delete/:id', isLoggedIn, (req, res) => {
 	const { id } = req.params;
 
 	db.run(`DELETE FROM tasks WHERE id=${id}`, (err) => {
@@ -46,7 +48,7 @@ router.get('/delete/:id', (req, res) => {
 	});
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isLoggedIn, (req, res) => {
 	const { id } = req.params;
 
 	const sql = `SELECT * FROM tasks WHERE id=${id}`;
@@ -59,7 +61,7 @@ router.get('/:id/edit', (req, res) => {
 	});
 });
 
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
 	const task = req.body;
 	const { state } = req.query;
 
@@ -77,7 +79,7 @@ router.post('/', (req, res) => {
 	);
 });
 
-router.post('/:id/edit', (req, res) => {
+router.post('/:id/edit', isLoggedIn, (req, res) => {
 	const updatedTask = req.body;
 	const { id } = req.params;
 
@@ -93,7 +95,7 @@ router.post('/:id/edit', (req, res) => {
 	});
 });
 
-router.put('/:id/state/:state', (req, res) => {
+router.put('/:id/state/:state', isLoggedIn, (req, res) => {
 	const { id, state } = req.params;
 
 	const sql = `UPDATE tasks SET state=${state} WHERE id=${id}`;

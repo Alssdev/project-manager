@@ -38,11 +38,6 @@ app.use(
 		secret: 'yVJZ58HdKRwIy9q',
 		resave: false,
 		saveUninitialized: false,
-		store: new SqliteStore({
-			driver: sqlite.Database,
-			path: path.join(__dirname, 'data/database.sqlite'),
-			ttl: 1234,
-		}),
 	})
 );
 app.use(flash());
@@ -56,6 +51,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
 	app.locals.success = req.flash('success');
 	app.locals.error = req.flash('error');
+	app.locals.user = req.user;
 	next();
 });
 
