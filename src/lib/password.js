@@ -10,7 +10,7 @@ module.exports = {
 
 	async match(password, hash) {
 		try {
-			await bcrypt.compare(password, hash);
+			return await bcrypt.compare(password, hash);
 		} catch (error) {
 			console.log(error);
 		}

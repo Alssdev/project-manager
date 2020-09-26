@@ -7,6 +7,10 @@ router.get('/signup', (req, res) => {
 	res.render('auth/signup');
 });
 
+router.get('/signin', (req, res) => {
+	res.render('auth/signin');
+});
+
 router.post(
 	'/signup',
 	passport.authenticate('local.signup', {
@@ -15,5 +19,13 @@ router.post(
 		failureFlash: true,
 	})
 );
+
+router.post('/signin', (req, res, next) => {
+	passport.authenticate('local.signin', {
+		successRedirect: '/tasks',
+		failureRedirect: '/signin',
+		failureFlash: true,
+	})(req, res, next);
+});
 
 module.exports = router;
