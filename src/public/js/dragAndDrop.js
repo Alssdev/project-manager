@@ -17,7 +17,9 @@ Sortable.create(toDo, {
 		},
 
 		get: function (sortable) {
-			const sequence = localStorage.getItem('sequence-toDo').split(',');
+			let sequence = localStorage.getItem('sequence-toDo')
+			sequence = sequence ? sequence.split(',') : {length: 0};
+
 			return sequence.length ? sequence : [];
 		},
 	},
@@ -45,7 +47,9 @@ Sortable.create(inProgress, {
 		},
 
 		get: function (sortable) {
-			const sequence = localStorage.getItem('sequence-inProgress').split(',');
+			let sequence = localStorage.getItem('sequence-toDo')
+			sequence = sequence ? sequence.split(',') : {length: 0};
+
 			return sequence.length ? sequence : [];
 		},
 	},
@@ -73,7 +77,9 @@ Sortable.create(completed, {
 		},
 
 		get: function (sortable) {
-			const sequence = localStorage.getItem('sequence-completed').split(',');
+			let sequence = localStorage.getItem('sequence-toDo')
+			sequence = sequence ? sequence.split(',') : {length: 0};
+
 			return sequence.length ? sequence : [];
 		},
 	},
