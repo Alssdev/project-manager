@@ -1,0 +1,12 @@
+<h1 class="title">Editar Divisor</h1>
+<div class="box">
+  <form action="/dividers/{{divider.id}}/edit" method="POST">
+    <div class="field">
+      <label class="label" for="title">Título</label>
+      <input class="input" id="title" name="title" type="text" value="{{divider.title}}" placeholder="Título para la tarea...." required>
+    </div>
+    <div class="buttons">
+      <button class="button is-info">Confirmar</button>
+    </div>
+  </form>
+</div>

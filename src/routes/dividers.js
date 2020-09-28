@@ -24,6 +24,20 @@ router.get('/delete/:id', isLoggedIn, (req, res) => {
   );
 });
 
+router.get('/:id/edit', isLoggedIn, (req, res) => {
+  const { id } = req.params;
+
+  const sql = `SELECT * FROM dividers WHERE id=${id} AND userID=${req.user.id}`;
+  db.all(sql, (err, rows) => {
+    if (err) {
+      req.flash('error', 'No se puedo acceder a los datos del divisor');
+      return res.redirect('/tasks');
+    }
+
+    res.render('dividers/edit', { divider: rows[0] });
+  });
+});
+
 router.post('/', isLoggedIn, (req, res) => {
   const { title } = req.body;
 
@@ -39,6 +53,22 @@ router.post('/', isLoggedIn, (req, res) => {
       res.redirect('tasks');
     }
   );
+});
+
+router.post('/:id/edit', isLoggedIn, (req, res) => {
+  const divider = req.body;
+  const { id } = req.params;
+
+  const sql = `UPDATE dividers SET title='${divider.title}' WHERE id=${id} AND userID=${req.user.id}`;
+  db.run(sql, (err) => {
+    if (err) {
+      req.flash('error', 'El divisor no ha sido editada satisfactoriamente.');
+    } else {
+      req.flash('success', 'El divisor ha sido editada satisfactoriamente.');
+    }
+
+    res.redirect('/tasks');
+  });
 });
 
 module.exports = router;

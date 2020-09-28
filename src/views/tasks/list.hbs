@@ -30,7 +30,6 @@
               </p>
             </div>  
           </div>
-          
           {{/each}}
 
           {{#each toDo}}
@@ -67,10 +66,18 @@
         <div id="inProgress">
 
           {{#each dividers}}
-          <div class="card-header has-background-info" id="divider" data-id="{{id}}">
-            <p class="card-header-title has-text-white is-centered">
-              {{title}}
-            </p>
+          <div class="divider">
+            <a href="/dividers/delete/{{id}}" class="delete"></a>
+            <a href="/dividers/{{id}}/edit">
+              <span class="icon edit">
+              <i class="fas fa-edit"></i>
+              </span>
+            </a>
+            <div class="card-header has-background-info" id="divider" data-id="{{id}}">
+              <p class="card-header-title has-text-white is-centered">
+                {{title}}
+              </p>
+            </div>  
           </div>
           {{/each}}
 
@@ -108,10 +115,18 @@
         <div id="completed">
 
           {{#each dividers}}
-          <div class="card-header has-background-info" id="divider" data-id="{{id}}">
-            <p class="card-header-title has-text-white is-centered">
-              {{title}}
-            </p>
+          <div class="divider">
+            <a href="/dividers/delete/{{id}}" class="delete"></a>
+            <a href="/dividers/{{id}}/edit">
+              <span class="icon edit">
+              <i class="fas fa-edit"></i>
+              </span>
+            </a>
+            <div class="card-header has-background-info" id="divider" data-id="{{id}}">
+              <p class="card-header-title has-text-white is-centered">
+                {{title}}
+              </p>
+            </div>  
           </div>
           {{/each}}
 
