@@ -9,10 +9,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-const sqlite = require('sqlite3');
-const sqliteStoreFactory = require('express-session-sqlite').default;
-const SqliteStore = sqliteStoreFactory(session);
-
 // intialiaztions
 const app = express();
 require('./lib/passsport');
