@@ -49,6 +49,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.use(require('./routes/index'));
 app.use(require('./routes/auth'));
 app.use('/tasks', require('./routes/tasks'));
 app.use('/dividers', require('./routes/dividers'));
