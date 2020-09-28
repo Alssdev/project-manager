@@ -5,7 +5,7 @@ const { isLoggedIn } = require('../lib/auth');
 
 const db = require('../db');
 
-router.get('/add', (req, res) => {
+router.get('/add', isLoggedIn, (req, res) => {
   res.render('dividers/add');
 });
 
@@ -39,10 +39,10 @@ router.get('/:id/edit', isLoggedIn, (req, res) => {
 });
 
 router.post('/', isLoggedIn, (req, res) => {
-  const { title } = req.body;
+  const { title, color } = req.body;
 
   db.run(
-    `INSERT INTO dividers(title, userID) VALUES('${title}', ${req.user.id})`,
+    `INSERT INTO dividers(title, color, userID) VALUES('${title}', '${color}' ,${req.user.id})`,
     (err) => {
       if (err) {
         req.flash('error', 'El divisor no hasido agregada satisfactoriamente.');
@@ -56,10 +56,10 @@ router.post('/', isLoggedIn, (req, res) => {
 });
 
 router.post('/:id/edit', isLoggedIn, (req, res) => {
-  const divider = req.body;
+  const { title, color } = req.body;
   const { id } = req.params;
 
-  const sql = `UPDATE dividers SET title='${divider.title}' WHERE id=${id} AND userID=${req.user.id}`;
+  const sql = `UPDATE dividers SET title='${title}', color='${color}' WHERE id=${id} AND userID=${req.user.id}`;
   db.run(sql, (err) => {
     if (err) {
       req.flash('error', 'El divisor no ha sido editada satisfactoriamente.');
