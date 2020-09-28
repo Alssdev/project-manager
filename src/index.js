@@ -2,8 +2,6 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 
 const path = require('path');
-const morgan = require('morgan');
-
 const flash = require('connect-flash');
 
 const session = require('express-session');
@@ -37,11 +35,15 @@ app.use(
   })
 );
 app.use(flash());
-app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+
+if (process.env.ENV !== 'production') {
+  const morgan = require('morgan');
+  app.use(morgan('dev'));
+}
 
 // global variables
 app.use((req, res, next) => {
