@@ -40,11 +40,6 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-if (process.env.ENV !== 'production') {
-  const morgan = require('morgan');
-  app.use(morgan('dev'));
-}
-
 // global variables
 app.use((req, res, next) => {
   app.locals.success = req.flash('success');
