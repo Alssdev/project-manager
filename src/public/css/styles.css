@@ -9,6 +9,11 @@
   opacity: 0;
 }
 
+.divider .delete,
+.edit {
+  opacity: 0;
+}
+
 .delete {
   transition: 0.3s;
 }
@@ -39,6 +44,14 @@
 }
 
 .tasks:hover .edit {
+  opacity: 1;
+}
+
+.divider:hover .delete {
+  opacity: 1;
+}
+
+.divider:hover .edit {
   opacity: 1;
 }
 
