@@ -1,44 +1,45 @@
 {
-	"name": "project-manager",
-	"version": "1.0.0",
-	"description": "A web application that will allow users to keep track of a project, showing the list of tasks to be done, a list of tasks in progress, and completed tasks.",
-	"main": "index.js",
-	"directories": {
-		"lib": "lib"
-	},
-	"scripts": {
-		"dev": "nodemon src/index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Alssdev/project-manager.git"
-	},
-	"keywords": [
-		"tasks",
-		"express",
-		"project-manager"
-	],
-	"author": "Alessandro Morales",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Alssdev/project-manager/issues"
-	},
-	"homepage": "https://github.com/Alssdev/project-manager#readme",
-	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"connect-flash": "^0.1.1",
-		"express": "^4.17.1",
-		"express-handlebars": "^4.0.4",
-		"express-mysql-session": "^2.1.4",
-		"express-session": "^1.17.1",
-		"express-session-sqlite": "^2.0.7",
-		"express-validator": "^6.6.1",
-		"passport": "^0.4.1",
-		"passport-local": "^1.0.0",
-		"sqlite3": "^5.0.0"
-	},
-	"devDependencies": {
-		"morgan": "^1.10.0",
-		"nodemon": "^2.0.4"
-	}
+  "name": "project-manager",
+  "version": "1.0.0",
+  "description": "A web application that will allow users to keep track of a project, showing the list of tasks to be done, a list of tasks in progress, and completed tasks.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alssdev/project-manager.git"
+  },
+  "keywords": [
+    "tasks",
+    "express",
+    "project-manager"
+  ],
+  "author": "Alessandro Morales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alssdev/project-manager/issues"
+  },
+  "homepage": "https://github.com/Alssdev/project-manager#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-mysql-session": "^2.1.4",
+    "express-session": "^1.17.1",
+    "express-session-sqlite": "^2.0.7",
+    "express-validator": "^6.6.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
 }
