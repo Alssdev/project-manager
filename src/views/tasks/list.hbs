@@ -1,4 +1,3 @@
-
 <div class="has-text-centered">
   <h1 class="title">Mi Proyecto de Prácticas</h1>
 </div>
@@ -17,14 +16,14 @@
         <div id="toDo">
 
           {{#each dividers}}
-          <div class="divider">
+          <div class="divider" data-id="{{id}}" id="divider">
             <a href="/dividers/delete/{{id}}" class="delete"></a>
             <a href="/dividers/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>
             </a>
-            <div class="card-header has-background-{{color}}" id="divider" data-id="{{id}}">
+            <div class="card-header has-background-{{color}}">
               <p class="card-header-title has-text-white is-centered">
                 {{title}}
               </p>
@@ -66,14 +65,14 @@
         <div id="inProgress">
 
           {{#each dividers}}
-          <div class="divider">
+          <div class="divider" data-id="{{id}}" id="divider">
             <a href="/dividers/delete/{{id}}" class="delete"></a>
             <a href="/dividers/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>
             </a>
-            <div class="card-header has-background-{{color}}" id="divider" data-id="{{id}}">
+            <div class="card-header has-background-{{color}}">
               <p class="card-header-title has-text-white is-centered">
                 {{title}}
               </p>
@@ -115,14 +114,14 @@
         <div id="completed">
 
           {{#each dividers}}
-          <div class="divider">
+          <div class="divider" data-id="{{id}}" id="divider">
             <a href="/dividers/delete/{{id}}" class="delete"></a>
             <a href="/dividers/{{id}}/edit">
               <span class="icon edit">
               <i class="fas fa-edit"></i>
               </span>
             </a>
-            <div class="card-header has-background-{{color}}" id="divider" data-id="{{id}}">
+            <div class="card-header has-background-{{color}}">
               <p class="card-header-title has-text-white is-centered">
                 {{title}}
               </p>

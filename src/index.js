@@ -7,9 +7,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-const sqliteStoreFactory = require('express-session-sqlite').default;
-const SqliteStore = sqliteStoreFactory(session);
-
 // intialiaztions
 const app = express();
 require('./lib/passsport');
@@ -42,11 +39,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-
-if (process.env.ENV !== 'production') {
-  const morgan = require('morgan');
-  app.use(morgan('dev'));
-}
 
 // global variables
 app.use((req, res, next) => {

@@ -49,7 +49,7 @@ Sortable.create(inProgress, {
     },
 
     get: function (sortable) {
-      let sequence = localStorage.getItem('sequence-toDo');
+      let sequence = localStorage.getItem('sequence-inProgress');
       sequence = sequence ? sequence.split(',') : { length: 0 };
 
       return sequence.length ? sequence : [];
@@ -80,7 +80,7 @@ Sortable.create(completed, {
     },
 
     get: function (sortable) {
-      let sequence = localStorage.getItem('sequence-toDo');
+      let sequence = localStorage.getItem('sequence-completed');
       sequence = sequence ? sequence.split(',') : { length: 0 };
 
       return sequence.length ? sequence : [];
